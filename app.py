@@ -47,8 +47,8 @@ class FailureReport(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        print("Form data received:", request.form.to.dict())
-        
+        print("Form data received:", request.form.to_dict())
+
         report = FailureReport(
             shift=get_shift_code(),
             location=request.form['location'],
