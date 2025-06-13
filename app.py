@@ -38,13 +38,13 @@ class FailureReport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     shift = db.Column(db.String(10))
     date_reported = db.Column(db.DateTime, default=datetime.utcnow)
-    date_solved = db.Column(db.DateTime, default=datetime.utcnow)
+    date_solved = db.Column(db.DateTime, nullable=True)
     location = db.Column(db.String(100), nullable=False)
     asset = db.Column(db.String(100), nullable=False)
     failure_mode = db.Column(db.String(200), nullable=False)
     root_cause = db.Column(db.String(200), nullable=False)
     failure_type = db.Column(db.String(100), nullable=False)
-    resolved = db.Column(db.Boolean, default=True)
+    resolved = db.Column(db.Boolean, default=False)
 
     @property
     def resolution_delta(self):
