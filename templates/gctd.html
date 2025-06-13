@@ -18,6 +18,7 @@
         <th>Failure Mode</th>
         <th>Root Cause</th>
         <th>Failure Type</th>
+        <th>Resolution Time</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
         <td>{{ ticket.failure_mode }}</td>
         <td>{{ ticket.root_cause }}</td>
         <td>{{ ticket.failure_type }}</td>
+        <td>{% if ticket.resolution_delta %}{{ ticket.resolution_delta }}{% else %}-{% endif %}</td>
       </tr>
       {% endfor %}
     </tbody>

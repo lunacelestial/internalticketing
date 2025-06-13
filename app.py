@@ -46,6 +46,12 @@ class FailureReport(db.Model):
     failure_type = db.Column(db.String(100), nullable=False)
     resolved = db.Column(db.Boolean, default=True)
 
+    @property
+    def resolution_delta(self):
+        if self.resolved and self.date_solved and self.date_reported:
+            return self.date_solved - self.date_reported
+        return None
+
 # --- Routes ---
 @app.route('/', methods=['GET', 'POST'])
 def index():
