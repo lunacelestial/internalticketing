@@ -22,6 +22,7 @@
         <th>Failure Mode</th>
         <th>Root Cause</th>
         <th>Failure Type</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,13 @@
         <td>{{ ticket.failure_mode }}</td>
         <td>{{ ticket.root_cause }}</td>
         <td>{{ ticket.failure_type }}</td>
+        <td>
+          {% if ticket.resolved %}
+            Resolved
+          {% else %}
+            <a href="{{ url_for('resolve_ticket', id=ticket.id) }}">Resolve</a>
+          {% endif %}
+        </td>
       </tr>
       {% endfor %}
     </tbody>
