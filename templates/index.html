@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Failure Report Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input, textarea, select, button {
+      padding: 8px;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Failure Entry Form</h1>
+  <form method="POST">
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" required>
+
+    <label for="asset">Asset</label>
+    <input type="text" name="asset" id="asset" required>
+
+    <label for="failure_mode">Failure Mode</label>
+    <input type="text" name="failure_mode" id="failure_mode" required>
+
+    <label for="root_cause">Root Cause</label>
+    <input type="text" name="root_cause" id="root_cause" required>
+
+    <label for="failure_type">Failure Type</label>
+    <input type="text" name="failure_type" id="failure_type" required>
+
+    <button type="submit">Submit Report</button>
+  </form>
+</body>
+</html>
