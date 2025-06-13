@@ -2,60 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Failure Report Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem auto;
-      max-width: 600px;
-    }
-    h1 {
-      text-align: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    input, textarea, select, button {
-      padding: 8px;
-      font-size: 1rem;
-      margin-top: 5px;
-    }
-    button {
-      margin-top: 2rem;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <h1>Failure Entry Form</h1>
+<body class="container py-5">
+  <h1 class="text-center mb-4">Failure Entry Form</h1>
   <form method="POST">
-    <label for="location">Location</label>
-    <input type="text" name="location" id="location" required>
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" name="location" id="location" class="form-control" required>
+    </div>
 
-    <label for="asset">Asset</label>
-    <input type="text" name="asset" id="asset" required>
+    <div class="mb-3">
+      <label for="asset" class="form-label">Asset</label>
+      <input type="text" name="asset" id="asset" class="form-control" required>
+    </div>
 
-    <label for="failure_mode">Failure Mode</label>
-    <input type="text" name="failure_mode" id="failure_mode" required>
+    <div class="mb-3">
+      <label for="failure_mode" class="form-label">Failure Mode</label>
+      <input type="text" name="failure_mode" id="failure_mode" class="form-control" required>
+    </div>
 
-    <label for="root_cause">Root Cause</label>
-    <input type="text" name="root_cause" id="root_cause" required>
+    <div class="mb-3">
+      <label for="root_cause" class="form-label">Root Cause</label>
+      <input type="text" name="root_cause" id="root_cause" class="form-control" required>
+    </div>
 
-    <label for="failure_type">Failure Type</label>
-    <input type="text" name="failure_type" id="failure_type" required>
+    <div class="mb-3">
+      <label for="failure_type" class="form-label">Failure Type</label>
+      <input type="text" name="failure_type" id="failure_type" class="form-control" required>
+    </div>
 
-    <button type="submit">Submit Report</button>
+    <button type="submit" class="btn btn-primary mt-3">Submit Report</button>
   </form>
 </body>
 </html>
