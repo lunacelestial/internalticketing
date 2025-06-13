@@ -85,6 +85,16 @@ def gctd_view():
     tickets = FailureReport.query.order_by(FailureReport.date_reported.desc()).all()
     return render_template('gctd.html', tickets=tickets)
 
+
+# --- Logout ---
+@app.route('/logout')
+def logout():
+    """Trigger browser re-authentication by returning a 401."""
+    return Response(
+        'Logged out', 401,
+        {'WWW-Authenticate': 'Basic realm="Login Required"'}
+    )
+
 # --- Main ---
 if __name__ == '__main__':
     with app.app_context():
