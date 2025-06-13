@@ -85,6 +85,15 @@ def gctd_view():
     tickets = FailureReport.query.order_by(FailureReport.date_reported.desc()).all()
     return render_template('gctd.html', tickets=tickets)
 
+# --- Resolve Ticket Route ---
+@app.route('/resolve/<int:id>')
+def resolve_ticket(id):
+    ticket = FailureReport.query.get_or_404(id)
+    ticket.resolved = True
+    ticket.date_solved = datetime.utcnow()
+    db.session.commit()
+    return redirect('/gctd')
+
 # --- Main ---
 if __name__ == '__main__':
     with app.app_context():
