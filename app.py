@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, Response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 import os
@@ -65,8 +65,25 @@ def index():
         db.session.commit()
         print("✅ Report committed to database.")
         return redirect('/')
-    
+
     return render_template('index.html')
+
+
+# --- Protected GCTD View ---
+VIEW_PASSWORD = os.environ.get("VIEW_PASSWORD", "changeme")
+
+
+@app.route('/gctd')
+def gctd_view():
+    auth = request.authorization
+    if not auth or auth.username != 'gctd' or auth.password != VIEW_PASSWORD:
+        return Response(
+            'Access denied', 401,
+            {'WWW-Authenticate': 'Basic realm="Login Required"'}
+        )
+
+    tickets = FailureReport.query.order_by(FailureReport.date_reported.desc()).all()
+    return render_template('gctd.html', tickets=tickets)
 
 # --- Main ---
 if __name__ == '__main__':

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GCTD Tickets</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin: 2rem auto; max-width: 800px;}
+    table {border-collapse: collapse; width: 100%;}
+    th, td {border: 1px solid #ddd; padding: 8px;}
+    th {background-color: #f2f2f2;}
+  </style>
+</head>
+<body>
+  <h1>Submitted Tickets</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Asset</th>
+        <th>Failure Mode</th>
+        <th>Root Cause</th>
+        <th>Failure Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ticket in tickets %}
+      <tr>
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.date_reported.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ ticket.location }}</td>
+        <td>{{ ticket.asset }}</td>
+        <td>{{ ticket.failure_mode }}</td>
+        <td>{{ ticket.root_cause }}</td>
+        <td>{{ ticket.failure_type }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
