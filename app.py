@@ -44,6 +44,7 @@ class FailureReport(db.Model):
     failure_mode = db.Column(db.String(200), nullable=False)
     root_cause = db.Column(db.String(200), nullable=False)
     failure_type = db.Column(db.String(100), nullable=False)
+    bucket = db.Column(db.String(50))
     resolved = db.Column(db.Boolean, default=True)
 
 # --- Routes ---
@@ -59,7 +60,8 @@ def index():
             asset=form_data['asset'],
             failure_mode=form_data['failure_mode'],
             root_cause=form_data['root_cause'],
-            failure_type=form_data['failure_type']
+            failure_type=form_data['failure_type'],
+            bucket=form_data['bucket']
         )
         db.session.add(report)
         db.session.commit()

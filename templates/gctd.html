@@ -22,6 +22,7 @@
         <th>Failure Mode</th>
         <th>Root Cause</th>
         <th>Failure Type</th>
+        <th>Bucket</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,7 @@
         <td>{{ ticket.failure_mode }}</td>
         <td>{{ ticket.root_cause }}</td>
         <td>{{ ticket.failure_type }}</td>
+        <td>{{ ticket.bucket }}</td>
       </tr>
       {% endfor %}
     </tbody>
